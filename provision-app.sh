@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 REPO_URL="https://github.com/Cameronnosliw/tech613-cameron-node20-ttt-app.git"
 
 sudo apt-get update -y
-sudo apt-get install -y nginx curl git
+sudo apt-get install -y nginx curl git unzip
 
 # Install Node.js 20 (only if not already installed)
 if ! command -v node > /dev/null 2>&1; then
@@ -30,6 +30,11 @@ else
     rm -rf app
     git clone "$REPO_URL" app
     cd app
+fi
+
+# Unzip app files if zipped
+if [ -f "nodejs20-sparta-tictactoe-v1.zip" ]; then
+    unzip -o nodejs20-sparta-tictactoe-v1.zip
 fi
 
 # Install app dependencies
